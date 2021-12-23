@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+  <title>Tree Fraction Calculator</title>
+  <style type="text/css">
+    span {background-color: #e8e8e8}
+  </style>
+</head>
+<body>
+
+<div><p>
+To have a fast visual effect ;) try the following. Enter <span>4</span> in the 1st cell, enter <span>~5</span> in the 2nd cell, press then <span>*</span> (uncancelled multiplication) between them. A big expression on the right side (3rd cell) appears, now press <span>%</span> (cancel) on the 3rd cell and enjoy reducing the right side. Some more examples you should try:
+</p>
+
+<table border="1">
+<tr><td>general equation</td><td>examples (the subscripts mean the assigned cell)</td></tr>
+<tr><td>xo(~x)=1</td><td>enter <span>[1,2,3]</span><sub>1</sub>, enter <span>~[1,2,3]</span><sub>2</sub>, press <span>*</span>, press <span>%</span><sub>3</sub></td></tr>
+<tr><td>(1+x)o(~x)=x+1</td>
+    <td>enter <span>[1,2,3,4]</span><sub>1</sub>, press <span>to2</span><sub>1</sub>, <span>~</span><sub>1</sub>, <span>1+</span><sub>1</sub>, press <span>o</span></td>
+</tr>
+<tr><td>~(xoy)=(~y)o(~x)</td>
+    <td>enter <span>4</span><sub>1</sub>, enter <span>~5</span><sub>2</sub>, press <span>o</span>, press <span>new cell</span>, press <span>as3</span><sub>4</sub><br/>
+        press <span>swap</span>, press <span>~</span><sub>1</sub>, press <span>~</span><sub>2</sub>, press <span>o</span>, press <span>~</span><sub>3</sub><br/>
+        cell 3 and 4 should be equal, press <span>x</span><sub>4</sub></td>
+</tr>
+<tr><td>(xo(~y))o(yoz)=xoz</td>
+    <td>enter <span>4 * (~3)</span><sub>1</sub>, press <span>enter</span><sub>1</sub>, press <span>%</span><sub>1</sub>, enter <span>3 o (~5)</span><sub>2</sub>, press <span>enter</span><sub>2</sub>, press <span>o</span>, enter <span>4 o (~5)</span><sub>3</sub>, press <span>enter</span></td>
+</tr>
+<tr><td>?</td>
+    <td>enter <span>[1,2,3]</span><sub>1</sub>, enter <span>[2,3,4]</span><sub>2</sub>, press <span>~</span><sub>2</sub>, press <span>*</span>, press <span>%</span><sub>3</sub><br/>Caution: computation expensive! Could fail to finish with error message.</td>
+</tr>
+</table>
+
+<p>
+After that, experiment for your own.
+</p>
+<p>
+Fractional trees have the general form
+<div style="text-align: center;"><img alt="{a1,...,am}`{b1,...,bn}" src="/cgi-bin/mimetex.cgi?\begin{Bmatrix}b_1,\dots,b_n \\\\ a_1,\dots,a_m\end{Bmatrix}"/></div> 
+where those
+a<sub>1</sub>,...,a<sub>m</sub>;b<sub>1</sub>,...,b<sub>n</sub>  are
+again fractional trees. So they are built up recursively, starting
+with 1. The text notation for the (above) fractional tree is
+[a<sub>1</sub>,...,a<sub>m</sub>;b<sub>1</sub>,...,b<sub>n</sub>],
+which can be quite unmanageable for bigger expression. For
+[;b<sub>1</sub>,...,b<sub>n</sub>] we write short
+[b<sub>1</sub>,...,b<sub>n</sub>]. The natural numbers are short for
+[...[1]...], for example 4 is short for [[[1]]]. To handle empty
+sequences in the graphical representation we write according with the rules
+<div style="text-align: center;"><p>
+<img alt="1=[;]" src="/cgi-bin/mimetex.cgi?1=[;]"/><br/>
+<img alt="{b1,...,bn}=[b1,...,bn]" src="/cgi-bin/mimetex.cgi?\begin{Bmatrix}b_1,\dots,b_n\end{Bmatrix}=[;b_1,...,b_n]"/><br/>
+<img alt="~{a1,...,an}=[a1,...,an;]" src="/cgi-bin/mimetex.cgi?\sim\begin{Bmatrix}a_1,\dots,a_m\end{Bmatrix}=[a_1,...,a_m;]"/><br/>
+</p></div>
+The fraction intention is expressed by
+
+<div style="text-align: center;"><p><img alt="~{a1,...,am}o{b1,...,bn}" src="/cgi-bin/mimetex.cgi?\sim\{a_1,\dots,a_m\}\circ \{b_1,\dots,b_n\}=\begin{Bmatrix}b_1,\dots,b_n \\\\ a_1,\dots,a_m\end{Bmatrix}"/></p></div>
+
+Verify the following laws by some examples<br/>
+<div style="text-align: center;"><p>
+ 1oa = ao1 = a <br/>
+ ao(~a) = (~a)oa = 1 <br/>
+ ao(boc)=(aob)oc (associative)<br/>
+ a*(b*c)=(a*b)*c <br/>
+ a+(b+c)=b+(a+c) (left-commutative)<br/>
+</p></div>
+You see that 1,o,~ form a group. To see whether it properly cancels you can also make some computations (1+(~a))oa = a+1 and (aob)o((~b)oc)=aoc. Create extra cells for intermediary results.
+
+<ol>
+<li>Find out how ~ (inversion) works! (easy)</li>
+<li>Find out how the * (uncanceled multiplication) works! </li>
+<li>Find out how % (canceling) works! (terrible) </li>
+</ol>
+
+The canceled multiplication aob is simply defined as %(a*b) where * is the uncanceled multiplication and % is to cancel. 
+In the input field of every cell you can also input expressions involving the given operations, for example %(4 * (~5)) though be aware that the parser is not very robust.<br/>
+Note that expressions can become big very fast. And computations then rapidly increase in time, so the server will kill the process after some seconds and you retrieve an error page.
+<p>
+Fractional trees are a generalization of fractional numbers. If we call an algebraic structure (C,1,+,o,~) a <i>coppice</i> if (C,1,o,~) is a group and if (a+b)oc = (aoc) + (boc) then the fractional numbers are the free +-associative coppice and the fractional trees are the free +-left-commutative coppice (both generated by the empty set, because we have already the constant 1 in the signature). 
+</p>
+<p>
+For a theoretical foundation look at my research document <a href="http://math.eretrandre.org/tree-aoc/pdf/latest.pdf">Arborescent numbers and higher arithmetic operations</a>
+To discuss this application feel free to post in the thread <a href="http://math.eretrandre.org/mybb/showthread.php?tid=5">Fractional Tree Calculator</a> of the <a href="http://math.eretrandre.org/mybb/index.php">Eretrandre mathematics forum</a>.
+</p>
+<hr/>
+<table width="100%"><tr>
+<td align="left"><i>Last modified</i> '.sprintf('%.4d-%.2d-%.2d %.2d:%.2d',$year,$mon,$day,$hour,$min).'  GMT</td>
+<td align="right"><i>Comments and suggestions to</i> bo198214 AT eretrandre DOT org</td>
+</tr></table>
+<p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+  </p>
+</div>
+
+</body>
+</html>

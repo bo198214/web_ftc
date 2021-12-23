@@ -1,0 +1,23 @@
+Make sure the perl path is appropriate in the file ftc.pl and put it
+into some subdirectory of cgi-bin. 
+Put there also the haskell files including LCDivTree.hs
+
+You need having installed the hugs98 (works with Sep2006) distribution
+together with the library QuickCheck at $prefix/lib/hugs/packages/QuickCheck
+(which is contained at least in the windows distribution of hugs98)
+configured with --prefix=$prefix where you can configure $prefix in
+ftc.pl. Possibly needed additional libraries (was  libgmp.so.3 and
+libreadline.so.5) put into $prefix/lib.
+Also $prefix/tmp must exist.
+
+You also need mimetex.cgi installed at /cgi-bin.
+If you want to do it a bit more sophisticated, because such a mass of
+Bmatrix commands can exhaust the needed GET method quickly, do the
+following: TODO
+
+
+Bugs:
+Currently by some reason the following expression leads to errornous
+graphic display, probably/perhaps because the to mimetex.cgi transmitted
+string is too long and becomes truncated.
+[[[;1,[;1,1,5]];],[[[1,[;1,1,5];],[[4;],[[[3;],[3;],[[[[[[2;];1];[3;]];1];[[[3;];[[2;];1]];[4;]]];1];[[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]];[[1;],[[4;];[[3;];[[2;];1]]];]]];[4;],[4;],1];[[3;],[[[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]];[[1;],[[4;];[[3;];[[2;];1]]];]];[3;],[3;],[[[[[[2;];1];[3;]];1];[[[3;];[[2;];1]];[4;]]];1]];[[2;],[[[1;],[[4;];[[3;];[[2;];1]]];];[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]]];[[;[1;],[[4;];[[3;];[[2;];1]]]];]]]];1];[[;1,[;1,1,5]];],[[;1,[;1,1,5]];],[[[[3;],[[[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]];[[1;],[[4;];[[3;];[[2;];1]]];]];[3;],[3;],[[[[[[2;];1];[3;]];1];[[[3;];[[2;];1]];[4;]]];1]];[[2;],[[[1;],[[4;];[[3;];[[2;];1]]];];[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]]];[[;[1;],[[4;];[[3;];[[2;];1]]]];]]];[4;],[[[3;],[3;],[[[[[[2;];1];[3;]];1];[[[3;];[[2;];1]];[4;]]];1];[[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]];[[1;],[[4;];[[3;];[[2;];1]]];]]];[4;],[4;],1]];[[[[2;],[[[1;],[[4;];[[3;];[[2;];1]]];];[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]]];[[;[1;],[[4;];[[3;];[[2;];1]]]];]];[3;],[[[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]];[[1;],[[4;];[[3;];[[2;];1]]];]];[3;],[3;],[[[[[[2;];1];[3;]];1];[[[3;];[[2;];1]];[4;]]];1]]];[[[[;[1;],[[4;];[[3;];[[2;];1]]]];];[2;],[[[1;],[[4;];[[3;];[[2;];1]]];];[2;],[2;],[[[[3;];[[2;];1]];[4;]];[[[[2;];1];[3;]];1]]]];[[;[;[1;],[[4;];[[3;];[[2;];1]]]]];[[;1,[;1,1,5]];]]]]]];1]
