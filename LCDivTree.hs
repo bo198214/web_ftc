@@ -424,7 +424,7 @@ showAsSimple (Frac a b) =
 
 rf :: Int -> RFraction
 rf 1 = e
-rf (n+1) = inc (rf n)
+rf n | n > 1 = inc (rf n)
 
 rf1, rf2, rf3, rf4 :: RFraction
 rf1 = e
