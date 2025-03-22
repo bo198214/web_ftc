@@ -1,0 +1,6 @@
+module Main where
+import LCDivTree
+main = putStr ( "" ++ (showAsLatex(rf3)) ++ "#" ++ (showAsSimple (rf3)) ++ "\n"++ "#" ++ "\n"++ "#" ++ "\n")
+-- 3
+--
+--
