@@ -3,7 +3,7 @@
 use strict;
 use CGI ("param");
 
-my $prefix = '/var/www/web123/files/usr';
+my $prefix = '/var/www/vhosts/h17167.web83.alfahosting-server.de/files/usr';
 my $LATEXSHOW = 'showAsLatex';
 #my $LATEXSHOW = 'showAsLatextf';
 
@@ -426,7 +426,7 @@ To discuss this application feel free to post in the thread <a href="http://math
 </tr></table>
 <p>
     <a href="http://validator.w3.org/check?uri=referer"><img
-        src="http://www.w3.org/Icons/valid-xhtml10"
+        src="https://www.w3.org/Icons/valid-xhtml10"
         alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
   </p>
 </div>
